@@ -6,6 +6,20 @@ import java.util.stream.Collectors;
 
 public class SolarDoomsday {
 
+	public static int[] workingSolution2(int area) {
+
+		ArrayList<Integer> resultList = new ArrayList<Integer>();
+		while (area > 0) {
+			int biggestSide = (int) Math.sqrt(area);
+			int biggestArea = (int) Math.pow(biggestSide, 2);
+
+			area -= biggestArea;
+
+			resultList.add(biggestArea);
+		}
+		return resultList.stream().mapToInt(i -> i).toArray();
+	}
+
 	public static int[] workingSolution(int area) {
 
 		int MAX_SIZE = Integer.MAX_VALUE;
@@ -98,7 +112,7 @@ public class SolarDoomsday {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
 
-		int ab[] = workingSolution(n);
+		int ab[] = workingSolution2(n);
 		// int ab[] = solution(n);
 
 		System.out.println(Arrays.toString(ab));
